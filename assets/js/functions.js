@@ -8,7 +8,7 @@ $(function() {
   /*===============================================
     Preloader
   ===============================================*/
-  $(window).load(function () {
+  $(window).load(function() {
     $("body").addClass("loaded");
   });
 
@@ -24,8 +24,8 @@ $(function() {
   /*===============================================
     Scroll Spy
   ===============================================*/
-  $('body').scrollspy({ 
-    target: '.menu', 
+  $('body').scrollspy({
+    target: '.menu',
     offset: 50
   });
 
@@ -39,8 +39,7 @@ $(function() {
   toggleBtn.on("click", function(e) {
     if (menu.hasClass("show-menu")) {
       menu.removeClass("show-menu");
-    }
-    else {
+    } else {
       menu.addClass("show-menu");
     }
     e.stopPropagation();
@@ -50,8 +49,7 @@ $(function() {
   toggleBtn.on("click", function() {
     if (toggleBtn.hasClass("toggle-close")) {
       toggleBtn.removeClass("toggle-close");
-    }
-    else {
+    } else {
       toggleBtn.addClass("toggle-close");
     }
   });
@@ -75,7 +73,7 @@ $(function() {
   var ssBtns = $(".nav li a, .btn-style");
 
   ssBtns.on("click", function(e) {
-    htmlBody.animate({scrollTop: $(this.hash).offset().top}, 700, "easeInOutQuart");
+    htmlBody.animate({ scrollTop: $(this.hash).offset().top }, 700, "easeInOutQuart");
     e.preventDefault();
   });
 
@@ -85,19 +83,19 @@ $(function() {
   ===============================================*/
   $(".counter").appear(function() {
 
-    $(this).each(function () {
-      $(this).prop("Counter",0).animate({
-          Counter: $(this).text()
+    $(this).each(function() {
+      $(this).prop("Counter", 0).animate({
+        Counter: $(this).text()
       }, {
-          duration: 3000,
-          easing: "swing",
-          step: function (now) {
-              $(this).text(Math.ceil(now));
-          }
+        duration: 3000,
+        easing: "swing",
+        step: function(now) {
+          $(this).text(Math.ceil(now));
+        }
       });
     });
-    
-  },{accX: 0, accY: -10});
+
+  }, { accX: 0, accY: -10 });
 
 
   /*===============================================
@@ -113,15 +111,15 @@ $(function() {
         }
       });
     });
-    
-  },{accX: 0, accY: -10});
+
+  }, { accX: 0, accY: -10 });
 
 
   /*===============================================
     Magnific Popup
   ===============================================*/
-  $('.lightbox-popup').magnificPopup({ 
-    type:'inline',
+  $('.lightbox-popup').magnificPopup({
+    type: 'inline',
     fixedContentPos: false,
     removalDelay: 100,
     closeBtnInside: true,
@@ -133,13 +131,13 @@ $(function() {
   /*===============================================
     Owl Carousel Sliders
   ===============================================*/
-  $(".owl-carousel").each( function() {
+  $(".owl-carousel").each(function() {
     var $carousel = $(this);
 
     var $defaults = {
       rewind: true,
-      navText: ["<i class='ti-angle-left'></i>","<i class='ti-angle-right'></i>"],
-      autoHeight: true, 
+      navText: ["<i class='ti-angle-left'></i>", "<i class='ti-angle-right'></i>"],
+      autoHeight: true,
       autoplayTimeout: 4000,
       autoplayHoverPause: true
     }
@@ -183,29 +181,29 @@ $(function() {
 
     var $responsive = {
       responsive: {
-        0 : {
+        0: {
           items: $carousel.data("owl-xs")
         },
         // breakpoint from 576px+
-        576 : {
+        576: {
           items: $carousel.data("owl-sm")
         },
         // breakpoint from 768px+
-        768 : {
+        768: {
           items: $carousel.data("owl-md")
         },
         // breakpoint from 992px+
-        992 : {
+        992: {
           items: $carousel.data("owl-lg")
         },
         // breakpoint from 1200px+
-        1200 : {
+        1200: {
           items: $carousel.data("owl-xl")
         }
       }
     }
 
-    $carousel.owlCarousel( $.extend( $defaults, $options, $responsive) );
+    $carousel.owlCarousel($.extend($defaults, $options, $responsive));
   });
 
 
@@ -215,7 +213,7 @@ $(function() {
   // Map Initial Location
   var initLatitude = 51.513569; // <- Latitude here
   var initLongitude = -0.123443; // <- Longitude here
-  
+
   var map = new GMaps({
     el: '#map-canvas',
     lat: initLatitude,
@@ -224,8 +222,8 @@ $(function() {
     scrollwheel: false
   });
   map.addMarker({
-    lat : initLatitude,
-    lng : initLongitude
+    lat: initLatitude,
+    lng: initLongitude
   });
 
 
@@ -249,20 +247,18 @@ $(function() {
     }
     if (message === "") {
       $("#message").addClass("error-color");
-    }
-
-    else {
+    } else {
       $.ajax({
-        url:"../assets/php/contact_form.php",
-        data:$(this).serialize(),
-        type:"POST",
-        success:function(data){
+        url: "../assets/php/contact_form.php",
+        data: $(this).serialize(),
+        type: "POST",
+        success: function(data) {
           $("#success").addClass("show-result"); //=== Show Success Message==
-          $("#contactform").each(function(){
+          $("#contactform").each(function() {
             this.reset();
           });
         },
-        error:function(data){
+        error: function(data) {
           $("#error").addClass("show-result"); //===Show Error Message====
         }
       });
